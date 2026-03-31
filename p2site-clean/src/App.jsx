@@ -218,6 +218,28 @@ export default function Phase2Website() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [checkedSections, setCheckedSections] = useState({});
   const [showCert, setShowCert] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", facility: "", facilityType: "", interest: "", message: "" });
+  const [formStatus, setFormStatus] = useState(null);
+
+  const handleFormSubmit = async () => {
+    setFormStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ access_key: "15d81423-1e0b-4d1e-b87f-9c52081271cb", ...formData, subject: "New Phase 2 Inquiry from " + formData.name })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setFormStatus("success");
+        setFormData({ name: "", email: "", facility: "", facilityType: "", interest: "", message: "" });
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  };
   const heroRef = useRef(null);
 
   useEffect(() => { setTimeout(() => setMounted(true), 60); }, []);
@@ -819,36 +841,47 @@ export default function Phase2Website() {
             </p>
           </div>
           <div className="card" style={{ padding: 36 }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
-              <input placeholder="Your name" />
-              <input placeholder="Email address" type="email" />
-              <input placeholder="Facility / organization name" />
-              <select defaultValue="">
-                <option value="" disabled>Facility type</option>
-                {["Independent Dialysis Center", "Dialysis Chain / Regional Group", "Hospital-Based Dialysis Unit", "Home Dialysis Program", "Multi-Site Network (5+ locations)", "Other Healthcare Facility"].map((o) => <option key={o}>{o}</option>)}
-              </select>
-            </div>
-            <div style={{ marginBottom: 14 }}>
-              <select defaultValue="" style={{ marginBottom: 14 }}>
-                <option value="" disabled>I'd like to…</option>
-                {PRICING.map((p) => <option key={p.id}>Request: {p.name} — {p.price}/{p.per}</option>)}
-                <option>Request: Tabletop Exercise Facilitation</option>
-                <option>Request: Multi-Site / Enterprise Quote</option>
-                <option>Not sure yet — I need guidance</option>
-              </select>
-              <textarea placeholder="Tell us about your facility — number of locations, upcoming surveys, or current planning status. The more detail you share, the better we can help." rows={4} style={{ resize: "vertical" }} />
-            </div>
-            <button className="btn btn-primary" style={{ width: "100%", padding: 14, fontSize: 15, textAlign: "center" }}>
-              Submit Request →
-            </button>
-            <div style={{ marginTop: 18, display: "flex", justifyContent: "center", gap: 28, flexWrap: "wrap" }}>
-              <p style={{ fontSize: 12, color: "#94A3B8", display: "flex", alignItems: "center", gap: 6 }}>
-                <span>📧</span> Personal response from Christopher within 1–2 business days
-              </p>
-              <p style={{ fontSize: 12, color: "#94A3B8", display: "flex", alignItems: "center", gap: 6 }}>
-                <span>🔒</span> No payment until we've confirmed your scope
-              </p>
-            </div>
+            {formStatus === "success" ? (
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
+                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 24, color: "#0F172A", marginBottom: 8 }}>Request Received</h3>
+                <p style={{ color: "#64748B", fontSize: 15 }}>Christopher will personally respond within 1–2 business days.</p>
+              </div>
+            ) : (
+              <>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
+                  <input placeholder="Your name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+                  <input placeholder="Email address" type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                  <input placeholder="Facility / organization name" value={formData.facility} onChange={e => setFormData({...formData, facility: e.target.value})} />
+                  <select value={formData.facilityType} onChange={e => setFormData({...formData, facilityType: e.target.value})}>
+                    <option value="" disabled>Facility type</option>
+                    {["Independent Dialysis Center", "Dialysis Chain / Regional Group", "Hospital-Based Dialysis Unit", "Home Dialysis Program", "Multi-Site Network (5+ locations)", "Other Healthcare Facility"].map((o) => <option key={o}>{o}</option>)}
+                  </select>
+                </div>
+                <div style={{ marginBottom: 14 }}>
+                  <select value={formData.interest} onChange={e => setFormData({...formData, interest: e.target.value})} style={{ marginBottom: 14 }}>
+                    <option value="" disabled>I'd like to…</option>
+                    {PRICING.map((p) => <option key={p.id}>Request: {p.name} — {p.price}/{p.per}</option>)}
+                    <option>Request: Tabletop Exercise Facilitation</option>
+                    <option>Request: Multi-Site / Enterprise Quote</option>
+                    <option>Not sure yet — I need guidance</option>
+                  </select>
+                  <textarea placeholder="Tell us about your facility — number of locations, upcoming surveys, or current planning status. The more detail you share, the better we can help." rows={4} style={{ resize: "vertical" }} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
+                </div>
+                {formStatus === "error" && <p style={{ color: "#EF4444", fontSize: 13, marginBottom: 10, textAlign: "center" }}>Something went wrong — please try again or email directly.</p>}
+                <button className="btn btn-primary" style={{ width: "100%", padding: 14, fontSize: 15, textAlign: "center", opacity: formStatus === "sending" ? 0.7 : 1 }} onClick={handleFormSubmit} disabled={formStatus === "sending"}>
+                  {formStatus === "sending" ? "Sending…" : "Submit Request →"}
+                </button>
+                <div style={{ marginTop: 18, display: "flex", justifyContent: "center", gap: 28, flexWrap: "wrap" }}>
+                  <p style={{ fontSize: 12, color: "#94A3B8", display: "flex", alignItems: "center", gap: 6 }}>
+                    <span>📧</span> Personal response from Christopher within 1–2 business days
+                  </p>
+                  <p style={{ fontSize: 12, color: "#94A3B8", display: "flex", alignItems: "center", gap: 6 }}>
+                    <span>🔒</span> No payment until we've confirmed your scope
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
