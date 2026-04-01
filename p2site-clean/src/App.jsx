@@ -294,7 +294,165 @@ export default function Phase2Website() {
         .fade-up-3 { animation: fadeUp 0.5s 0.2s ease both; }
         .fade-up-4 { animation: fadeUp 0.5s 0.3s ease both; }
         .stat-num { font-family: 'Fraunces', serif; font-size: 40px; font-weight: 900; color: #0F172A; line-height: 1; }
+
+        /* ── MOBILE RESPONSIVE ── */
+        @media (max-width: 768px) {
+          #home { grid-template-columns: 1fr !important; gap: 32px !important; padding: 48px 20px 40px !important; }
+          #home h1 { font-size: 34px !important; }
+          #solutions { padding: 48px 20px !important; }
+          #solutions > div:nth-child(2) { grid-template-columns: 1fr !important; }
+          #bundle { padding: 48px 20px !important; }
+          #pricing { padding: 48px 20px !important; }
+          #pricing > div:nth-child(2) { grid-template-columns: 1fr !important; }
+          #about { padding: 48px 20px !important; }
+          #about > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+          #contact { padding: 48px 20px !important; }
+          .mobile-hide { display: none !important; }
+          .mobile-menu-btn { display: flex !important; }
+          nav { padding: 0 20px !important; }
+          nav > div:last-child { display: none !important; }
+          nav > div:last-child.mobile-open { display: flex !important; flex-direction: column !important; position: fixed !important; top: 64px !important; left: 0 !important; right: 0 !important; background: white !important; padding: 20px !important; border-bottom: 1px solid #E2E8F0 !important; gap: 16px !important; z-index: 99 !important; }
+          .hero-right { display: none !important; }
+          .process-step { flex-direction: column !important; align-items: flex-start !important; }
+          .process-connector { display: none !important; }
+          footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+          footer > div > div:last-child { flex-wrap: wrap !important; gap: 12px !important; }
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .ai-section-inner { flex-direction: column !important; }
+          .comparison-table { overflow-x: auto !important; display: block !important; }
+          .trust-bar { gap: 16px !important; padding: 16px 20px !important; }
+          .tabletop-banner { flex-direction: column !important; align-items: flex-start !important; }
+          .per-location-note { flex-direction: column !important; }
+          h2 { font-size: 28px !important; }
+          .pricing-grid { grid-template-columns: 1fr !important; }
+          .about-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          section { padding-left: 20px !important; padding-right: 20px !important; }
+        }
+        @media (max-width: 480px) {
+          #home h1 { font-size: 28px !important; }
+          h2 { font-size: 24px !important; }
+          .pricing-card { padding: 24px !important; }
+          .stat-num { font-size: 32px !important; }
+        }
       `}</style>
+
+      {/* ── SEO STRUCTURED DATA ── */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://phase2prep.com/#business",
+            "name": "Phase 2 Preparedness Solutions",
+            "alternateName": "Phase 2 Prep",
+            "description": "CMS §494.62-compliant Emergency Operations Plans for dialysis centers and ESRD facilities. Expert emergency preparedness consulting, compliance gap assessments, all-hazards EOP development, and tabletop exercise facilitation for outpatient dialysis centers.",
+            "url": "https://phase2prep.com",
+            "email": "christopher@phase2prep.com",
+            "areaServed": {
+              "@type": "Country",
+              "name": "United States"
+            },
+            "serviceType": [
+              "Emergency Operations Plan Development",
+              "CMS §494.62 Compliance Consulting",
+              "ESRD Emergency Preparedness",
+              "Dialysis Center Emergency Planning",
+              "Hazard Vulnerability Analysis",
+              "Tabletop Exercise Facilitation",
+              "Emergency Preparedness Gap Assessment",
+              "Healthcare Emergency Management"
+            ],
+            "knowsAbout": [
+              "CMS §494.62",
+              "42 CFR Part 494",
+              "ESRD Emergency Preparedness",
+              "CMS Appendix Z",
+              "Dialysis Center Survey Readiness",
+              "All-Hazards Emergency Planning",
+              "NIMS ICS",
+              "NFPA 1600",
+              "Hazard Vulnerability Analysis",
+              "Emergency Operations Plan",
+              "Dialysis Facility Disaster Planning",
+              "CMS Emergency Preparedness Rule"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Dialysis Emergency Preparedness Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "name": "Compliance Gap Assessment",
+                  "description": "CMS §494.62 emergency preparedness gap assessment for dialysis centers including HVA readiness review, communications plan analysis, and prioritized corrective action report.",
+                  "price": "247",
+                  "priceCurrency": "USD"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "All-Hazards EOP Bundle",
+                  "description": "Complete CMS §494.62-compliant Emergency Operations Plan for dialysis centers including all 9 all-hazards components, personally reviewed and certified by Christopher Miles, MA, CEM, CHEP, CHEC.",
+                  "price": "897",
+                  "priceCurrency": "USD"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Ongoing Compliance Retainer",
+                  "description": "Year-round emergency preparedness compliance oversight for dialysis centers including quarterly plan reviews, regulatory updates, and annual tabletop exercise facilitation.",
+                  "price": "599",
+                  "priceCurrency": "USD",
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "599",
+                    "priceCurrency": "USD",
+                    "unitText": "month"
+                  }
+                }
+              ]
+            },
+            "founder": {
+              "@type": "Person",
+              "@id": "https://phase2prep.com/#founder",
+              "name": "Christopher Miles",
+              "jobTitle": "Certified Emergency Manager",
+              "description": "Healthcare emergency management professional with 15+ years of experience across healthcare, higher education, and government.",
+              "hasCredential": [
+                {
+                  "@type": "EducationalOccupationalCredential",
+                  "credentialCategory": "degree",
+                  "name": "Master of Arts in Emergency Management"
+                },
+                {
+                  "@type": "EducationalOccupationalCredential",
+                  "credentialCategory": "certification",
+                  "name": "Certified Emergency Manager (CEM)",
+                  "recognizedBy": {
+                    "@type": "Organization",
+                    "name": "International Association of Emergency Managers (IAEM)"
+                  }
+                },
+                {
+                  "@type": "EducationalOccupationalCredential",
+                  "credentialCategory": "certification",
+                  "name": "Certified Healthcare Emergency Professional (CHEP)"
+                },
+                {
+                  "@type": "EducationalOccupationalCredential",
+                  "credentialCategory": "certification",
+                  "name": "Certified Healthcare Emergency Coordinator (CHEC)"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://phase2prep.com/#website",
+            "url": "https://phase2prep.com",
+            "name": "Phase 2 Preparedness Solutions",
+            "description": "Emergency preparedness consulting for dialysis centers — CMS §494.62 compliant EOPs, gap assessments, and retainer services.",
+            "publisher": { "@id": "https://phase2prep.com/#business" }
+          }
+        ]
+      })}} />
 
       {/* ── NAVBAR ── */}
       <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid #F1F5F9", padding: "0 40px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -319,19 +477,31 @@ export default function Phase2Website() {
           ))}
           <button className="btn btn-primary" style={{ padding: "9px 20px", fontSize: 13 }} onClick={() => scrollTo("contact")}>Work With Us</button>
         </div>
+        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} style={{ display: "none", background: "none", border: "none", cursor: "pointer", flexDirection: "column", gap: 5, padding: 4 }} className="mobile-menu-btn">
+          <div style={{ width: 24, height: 2, background: "#0F172A", borderRadius: 2 }} />
+          <div style={{ width: 24, height: 2, background: "#0F172A", borderRadius: 2 }} />
+          <div style={{ width: 24, height: 2, background: "#0F172A", borderRadius: 2 }} />
+        </button>
+        {mobileMenuOpen && (
+          <div style={{ display: "flex", flexDirection: "column", position: "fixed", top: 64, left: 0, right: 0, background: "white", padding: 20, borderBottom: "1px solid #E2E8F0", gap: 16, zIndex: 99 }}>
+            {[["solutions","Solutions"],["bundle","The Process"],["pricing","Pricing"],["about","About"],["contact","Work With Us"]].map(([id, label]) => (
+              <button key={id} className="nav-link" onClick={() => scrollTo(id)} style={{ textAlign: "left", fontSize: 16, padding: "8px 0" }}>{label}</button>
+            ))}
+          </div>
+        )}
       </nav>
 
       {/* ── HERO ── */}
       <section id="home" ref={heroRef} style={{ padding: "90px 40px 80px", maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
         <div>
           <div className="fade-up" style={{ marginBottom: 18 }}>
-            <Tag color="#0EA5E9">CMS & Joint Commission Compliant</Tag>
+            <Tag color="#0EA5E9">CMS §494.62 Compliant</Tag>
           </div>
           <h1 className="fade-up-2" style={{ fontFamily: "'Fraunces', serif", fontSize: 52, fontWeight: 900, color: "#0F172A", lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 20 }}>
             CMS & Survey-Ready Plans Built for<br /><span style={{ color: "#0EA5E9" }}>Dialysis Centers.</span>
           </h1>
           <p className="fade-up-3" style={{ fontSize: 17, color: "#475569", lineHeight: 1.7, marginBottom: 32, fontWeight: 300 }}>
-            Survey-ready Emergency Operations Plans written by a credentialed hospital emergency manager — not a template mill. Protect your patients, your staff, and your CMS certification.
+            Survey-ready Emergency Operations Plans written by a credentialed healthcare emergency manager — not a template mill. Protect your patients, your staff, and your CMS certification.
           </p>
           <div className="fade-up-4" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <button className="btn btn-primary" onClick={() => scrollTo("bundle")}>See The Process →</button>
@@ -849,7 +1019,7 @@ export default function Phase2Website() {
               </div>
             ) : (
               <>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
+            <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
                   <input placeholder="Your name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
                   <input placeholder="Email address" type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
                   <input placeholder="Facility / organization name" value={formData.facility} onChange={e => setFormData({...formData, facility: e.target.value})} />
