@@ -414,7 +414,7 @@ export default function Phase2Website() {
               "@id": "https://phase2prep.com/#founder",
               "name": "Christopher Miles",
               "jobTitle": "Certified Emergency Manager",
-              "description": "Healthcare emergency management professional with 15+ years of experience across healthcare, higher education, and government.",
+              "description": "Healthcare emergency management professional with 15+ years in public safety and emergency management across healthcare, higher education, and government.",
               "hasCredential": [
                 {
                   "@type": "EducationalOccupationalCredential",
@@ -511,7 +511,7 @@ export default function Phase2Website() {
             {[
               { num: "9", label: "EOP Components" },
               { num: "100%", label: "CMS §494.62 / JC Aligned" },
-              { num: "15+", label: "Years Experience" },
+              { num: "15+", label: "Years in Public Safety & EM" },
             ].map(({ num, label }) => (
               <div key={label}>
                 <div style={{ fontFamily: "'Fraunces', serif", fontSize: 28, fontWeight: 900, color: "#0F172A" }}>{num}</div>
@@ -523,10 +523,10 @@ export default function Phase2Website() {
 
         {/* Hero card */}
         <div className="fade-up-3" style={{ background: "#F8FAFC", border: "1.5px solid #E2E8F0", borderRadius: 20, padding: 28, position: "relative" }}>
-          <div style={{ position: "absolute", top: -12, right: 24 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+            <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#94A3B8", margin: 0 }}>Dialysis EOP Bundle Includes</p>
             <Tag color="#10B981">✓ Survey Ready</Tag>
           </div>
-          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#94A3B8", marginBottom: 16 }}>Dialysis EOP Bundle Includes</p>
           {HAZARDS.map((h) => (
             <div key={h.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 0", borderBottom: "1px solid #F1F5F9" }}>
               <div style={{ width: 28, height: 28, borderRadius: 7, background: "#E0F2FE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0 }}>{h.icon}</div>
@@ -603,7 +603,7 @@ export default function Phase2Website() {
               <span style={{ color: "#C9A84C" }}>That's the Difference.</span>
             </h2>
             <p style={{ fontSize: 16, color: "#64748B", maxWidth: 640, margin: "0 auto", fontWeight: 300, lineHeight: 1.7 }}>
-              Phase 2 uses the latest AI tools to accelerate plan development and ensure thorough coverage — then every plan is reviewed, refined, and certified by a credentialed emergency manager with 15+ years of real-world experience. AI alone can't do that.
+              Phase 2 uses the latest AI tools to accelerate plan development and ensure thorough coverage — then every plan is reviewed, refined, and certified by a credentialed emergency manager with 15+ years in public safety and emergency management. AI alone can't do that.
             </p>
           </div>
 
@@ -664,7 +664,7 @@ export default function Phase2Website() {
               { need: "Dialysis-specific scenarios", ai: "General healthcare content", p2: "Dialysis-only clinical protocols" },
               { need: "Surveyor-ready documentation", ai: "Unpredictable outcome", p2: "Reviewed by CEM, CHEP, CHEC" },
               { need: "Professional accountability", ai: "No credentials attached", p2: "Certified review included" },
-              { need: "Regulatory interpretation", ai: "Based on public documents", p2: "15+ years of real survey experience" },
+              { need: "Regulatory interpretation", ai: "Based on public documents", p2: "15+ years in public safety & emergency management" },
             ].map(({ need, ai, p2 }, i) => (
               <div key={need} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", padding: "14px 24px", borderBottom: i < 5 ? "1px solid #1A2535" : "none", alignItems: "center" }}>
                 <span style={{ fontSize: 13, color: "#94A3B8", fontWeight: 500 }}>{need}</span>
@@ -937,7 +937,7 @@ export default function Phase2Website() {
               Plans Written by Someone Who's Actually Used Them
             </h2>
             <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 20, fontWeight: 300 }}>
-              Phase 2 Preparedness Solutions is led by <strong style={{ color: "#0F172A", fontWeight: 600 }}>Christopher Miles, MA, CEM, CHEP, CHEC</strong> — a nationally credentialed emergency manager with 15+ years of hands-on experience across healthcare, higher education, and government.
+              Phase 2 Preparedness Solutions is led by <strong style={{ color: "#0F172A", fontWeight: 600 }}>Christopher Miles, MA, CEM, CHEP, CHEC</strong> — a nationally credentialed emergency manager with 15+ years in public safety and emergency management across healthcare, higher education, and government.
             </p>
             <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 32, fontWeight: 300 }}>
               Every plan is built from real activations, real surveys, and real lessons learned. When your surveyor arrives, you'll be ready.
@@ -975,7 +975,7 @@ export default function Phase2Website() {
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#475569", marginBottom: 28 }}>By The Numbers</p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, marginBottom: 28 }}>
               {[
-                { num: "15+", label: "Years in Emergency Management" },
+                { num: "15+", label: "Years in Public Safety & Emergency Management" },
                 { num: "3", label: "Sectors: Healthcare, Gov't, Higher Ed" },
                 { num: "100%", label: "Personally reviews every plan" },
                 { num: "1", label: "Credentialed expert behind every certificate" },
